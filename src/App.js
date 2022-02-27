@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import Cards from './Cards';
+import Loader from './Loader';
+import Navbar from './Navbar';
 
 function App() {
+
+  const [items, setItems] = useState(null);
+  const [clicked, setClicked] = useState(false);
+
+  console.log(items)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Navbar setItems={setItems} setClicked={setClicked} />
+
+      {items ?
+        <div>
+          <Cards obj={items?.data?.slice(0, 3)} />
+          <Cards obj={items?.data?.slice(3, 6)} />
+        </div>
+        : <></>}
+
+      {clicked && !items ?
+        <Loader /> : <></>
+      }
     </div>
   );
 }

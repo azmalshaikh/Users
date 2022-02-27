@@ -1,0 +1,18 @@
+.cards {
+    margin: 50px 50px;
+}
+
+@media (max-width: 750px) {
+    .cards {
+        margin: 50px 30px;
+    }
+}
+
+.cards__row {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 5px;
+    align-items: center;
+    justify-content: center;
+    scroll-behavior: auto;
+}
